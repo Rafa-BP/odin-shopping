@@ -3,34 +3,8 @@ import { Outlet } from "react-router";
 
 import NavButton from "./components/NavButton";
 import Footer from "./components/Footer";
-import { useEffect, useState } from "react";
-
-interface product {
-  id: number,
-  title: string,
-  price: number,
-  description: string,
-  category: string,
-  image: string
-};
 
 function App() {
-
-  const [products, setProducts] = useState<product[]>([]);
-
-  useEffect(() => {
-    async function getData() {
-      const response = await fetch('https://fakestoreapi.com/products');
-      if (response.status != 200) {
-        console.log("error");
-      }
-      const data = await response.json();
-
-      setProducts(data);
-    }
-  getData();
-
-  }, []);
 
   return (
     <>
