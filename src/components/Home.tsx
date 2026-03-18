@@ -1,10 +1,8 @@
-import "../tailwind.css";
-
 function Home() {
   return (
-    <main className="bg-gray-700 w-full h-dvh flex justify-center items-center">
-      <h1 className="text-white text-xl">Testing</h1>
-    </main>
+    <div className='flex flex-col justify-center items-center h-lvh w-full bg-gray-700 p-6'>
+      <h1 className="text-white text-lg">testing</h1>
+    </div>
   );
 }
 
