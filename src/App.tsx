@@ -7,7 +7,7 @@ import { Link, Outlet } from "react-router-dom";
 function App() {
 
   const [products, setProducts] = useState<product[]>([]);
-  // const [cart, setCart] = useState<product[]>([]);
+  const [cart, setCart] = useState<product[]>([]);
 
   useEffect(() => {
     async function getData() {
@@ -18,6 +18,7 @@ function App() {
       };
 
       const data = await response.json();
+      console.log(data);
       
       setProducts(data);
     };
@@ -35,7 +36,7 @@ function App() {
           <Link to={"cart"} className="rounded-md bg-blue-500 text-white text-center p-2 w-24">Cart</Link>
         </div>
       </nav>
-      <Outlet context={[products]} />
+      <Outlet context={[products, cart, setCart]} />
       <Footer />
     </>
   );
