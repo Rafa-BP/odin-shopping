@@ -8,15 +8,17 @@ function Shop() {
 
   function HandleAddToCart(event: React.SubmitEvent<HTMLFormElement>): void {
     event.preventDefault();
-    const exists = cart.find((item) => item.id === event.target.id);
 
-    if (exists) {
-      setCart(cart.map((item) => (item.id == exists.id) ? {...item} : item ));
+    const quantity: number = (event.target.quantity.value > 0) ? parseInt(event.target.quantity.value) : 1;
+    const exists = cart.find((item) => item.id == event.target.id);
+
+    if (exists != undefined) {
+      setCart(cart.map((item) => (item.id == event.target.id) ? {...item, quantity: item.quantity + quantity} : item ));
     } else {
-      setCart([...cart, products[event.target.id]])
+      setCart([...cart, {...products[event.target.id - 1], id: event.target.id ,quantity: quantity}])
     }
   };
-
+  
   return (
     <div className='grid grid-cols-5 gap-8 h-vh w-full bg-gray-700 p-6'>
       {(Array.isArray(products)) 
@@ -26,7 +28,7 @@ function Shop() {
         <img className="size-20" src={item.image} alt={item.description} />
         <form id={item.id} method="post" onSubmit={HandleAddToCart} className="flex items-center gap-2 rounded-sm text-white bg-gray-500 p-4">
           <label htmlFor="quantity">How Many</label>
-          <input type="number" id="quantity" name="quantity" className="w-12 border-solid-black"/>
+          <input type="number" id="quantity" name="quantity" className="w-12 border-solid-black" min='1'/>
           <input type="submit" className="bg-green-400 text-white rounded-sm p-2" value={"Add to Cart"} id={item.id.toString()}  />
         </form>
       </div>) 
