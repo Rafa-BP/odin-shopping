@@ -29,7 +29,7 @@ function App() {
   return (
     <>
       <nav className="flex py-6 px-16 w-full items-center justify-between bg-gray-800 shadow-lg">
-        <h1 className="text-4xl text-white">Fake Shop</h1>
+        <h1 className="text-4xl text-white">Fake Store</h1>
         <div className="flex gap-4">
           <Link to={"home"} className="rounded-md bg-blue-500 text-white text-center p-2 w-24">Home</Link>
           <Link to={"shop"} className="rounded-md bg-blue-500 text-white text-center p-2 w-24">Shop</Link>
@@ -45,7 +45,7 @@ function App() {
 function Footer() {
     return (
     <div className='grid grid-cols-4 gap-6 p-8 bg-black'>
-      <h1 className="text-white text-lg">testing</h1>
+      <h1 className="text-white text-lg">Cool Footer</h1>
     </div>
   );
 }
